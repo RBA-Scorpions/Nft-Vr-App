@@ -9,12 +9,11 @@ import { Link, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { Image, Pressable } from 'react-native';
 import { useEffect } from 'react';
-import '../global.css';
 import { useColorScheme } from '@/components/useColorScheme';
 import Colors from '@/constants/Colors';
 import { View, Text } from '@/components/Themed';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-
+import '../global.css';
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -31,6 +30,8 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    Gotham: require('../assets/fonts/GothamMedium.ttf'),
+    Poppins: require('../assets/fonts/Poppins-Regular.ttf'),
     ...FontAwesome.font,
   });
 
@@ -69,7 +70,9 @@ function Header() {
             : require('../assets/images/Light.png')
         }
       />
-      <Text style={{ fontSize: 18, fontWeight: '400' }}>ENMA Galaxy</Text>
+      <Text style={{ fontSize: 18, fontWeight: '400', fontFamily: 'Gotham' }}>
+        ENMA Galaxy
+      </Text>
       <Link href='/settings' asChild>
         <Pressable>
           {({ pressed }) => (
