@@ -3,8 +3,8 @@ import React from 'react';
 
 const notifications = () => {
   return (
-    <View>
-      <Text>notifications</Text>
+    <View className='min-h-screen'>
+      <Text className='text-3xl pt-20 text-center'>Notifications</Text>
     </View>
   );
 };

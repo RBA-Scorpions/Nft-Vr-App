@@ -11,14 +11,6 @@ import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { Image } from 'react-native';
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof Foundation>['name'];
-  color: string;
-}) {
-  return <Foundation size={30} style={{ marginBottom: -3 }} {...props} />;
-}
-
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -28,29 +20,51 @@ export default function TabLayout() {
         // Disable the header globally for all screens within this Tabs component
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: colorScheme === 'dark' ? '#24252D' : '#FFF',
+          backgroundColor: colorScheme === 'dark' ? '#2A2D3A' : '#FFF',
           paddingBottom: 5,
-          paddingTop: 10,
+          paddingTop: 15,
           height: 65,
+          position: 'absolute',
           borderTopLeftRadius: 33,
           borderTopRightRadius: 33,
         },
-
         tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         // ... other desired tab bar options
+        headerShadowVisible: true,
       }}
     >
       <Tabs.Screen
         name='index'
         options={{
           title: '',
-          tabBarIcon: ({ color }) => (
-            <Foundation size={30} color={color} name='home' />
-          ),
+          tabBarIcon: ({ color, focused }) =>
+            colorScheme === 'dark' ? (
+              focused ? (
+                <Image
+                  source={require('../../assets/icons/home/home-dark-1.png')}
+                  width={30}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/icons/home/home-dark-0.png')}
+                  width={30}
+                />
+              )
+            ) : focused ? (
+              <Image
+                source={require('../../assets/icons/home/home-light-1.png')}
+                width={30}
+              />
+            ) : (
+              <Image
+                source={require('../../assets/icons/home/home-light-0.png')}
+                width={30}
+              />
+            ),
         }}
       />
       <Tabs.Screen
-        name='two'
+        name='search'
         options={{
           title: '',
           tabBarIcon: ({ color }) => (

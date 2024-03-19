@@ -14,6 +14,7 @@ import Colors from '@/constants/Colors';
 import { View, Text } from '@/components/Themed';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import '../global.css';
+import { EvilIcons } from '@expo/vector-icons';
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
@@ -75,14 +76,21 @@ function Header() {
       </Text>
       <Link href='/settings' asChild>
         <Pressable>
-          {({ pressed }) => (
-            <FontAwesome
-              name='gear'
-              size={30}
-              color={Colors[colorScheme ?? 'light'].text}
-              style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-            />
-          )}
+          {({ pressed }) =>
+            colorScheme === 'dark' ? (
+              <Image
+                width={30}
+                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                source={require('../assets/icons/settings/setting.png')}
+              />
+            ) : (
+              <Image
+                width={30}
+                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                source={require('../assets/icons/settings/setting-light.png')}
+              />
+            )
+          }
         </Pressable>
       </Link>
     </View>
@@ -97,7 +105,7 @@ function RootLayoutNav() {
       <Stack
         screenOptions={{
           headerStyle: {
-            backgroundColor: colorScheme === 'dark' ? '#2D2E36' : '#fff',
+            backgroundColor: colorScheme === 'dark' ? '#2D2E36' : '#FFF',
           },
 
           headerTintColor: '#fff',

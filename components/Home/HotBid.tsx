@@ -3,12 +3,12 @@ import {
   StyleSheet,
   Image,
   Pressable,
-  View,
   useColorScheme,
   Platform,
   Dimensions,
+  ImageBackground,
 } from 'react-native';
-import { Text } from '../Themed';
+import { Text, View } from '../Themed';
 
 const width = Dimensions.get('window').width;
 
@@ -36,7 +36,32 @@ const ProductListItem = ({ Bid }: any) => {
           source={require('../../assets/images/bid.png')}
         />
         <Text style={styles.title}>{Bid.name}</Text>
-        <Text style={styles.price}>{Bid.price} ETH</Text>
+        <View
+          style={{
+            backgroundColor: colorScheme === 'dark' ? '#2A2D3A' : '#FFF',
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexDirection: 'row',
+          }}
+        >
+          <Text style={styles.price}>{Bid.price} ETH</Text>
+          <View className='flex flex-row items-center gap-3'>
+            <Image
+              source={require('../../assets/icons/heart/Active.png')}
+              style={{
+                width: 15,
+                height: 15,
+              }}
+            />
+            <Text
+              style={{
+                marginLeft: 4,
+              }}
+            >
+              {Bid.likedBy}
+            </Text>
+          </View>
+        </View>
       </Pressable>
     </View>
   );
@@ -59,7 +84,7 @@ const styles = StyleSheet.create({
         shadowRadius: 2,
       },
       android: {
-        elevation: 2,
+        elevation: 8,
       },
     }),
   },

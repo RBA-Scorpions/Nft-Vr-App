@@ -1,4 +1,9 @@
-import { Dimensions, View, useColorScheme } from 'react-native';
+import {
+  Dimensions,
+  ImageBackground,
+  View,
+  useColorScheme,
+} from 'react-native';
 import { Text } from '../Themed';
 import React from 'react';
 import { Image } from 'react-native';
@@ -35,16 +40,34 @@ const TopSeller = ({ Seller }: any) => {
             fontFamily: 'Poppins',
             fontSize: 14,
             fontWeight: '600',
+            color: '#FFF',
           }}
         >
           {Seller.id}
         </Text>
       </View>
-      <Image
-        source={require('../../assets/images/Person.png')}
-        width={100}
-        style={{ borderRadius: 50, aspectRatio: 1, marginTop: 2 }}
-      />
+
+      <View
+        style={{
+          marginTop: 15,
+        }}
+      >
+        <ImageBackground
+          source={require('../../assets/images/Person.png')}
+          borderRadius={50}
+          style={{ aspectRatio: 1, width: 100 }}
+        >
+          <Image
+            source={require('../../assets/icons/others/iconVerified.png')}
+            style={{
+              position: 'absolute',
+              bottom: 1,
+              right: 10,
+              aspectRatio: 1,
+            }}
+          />
+        </ImageBackground>
+      </View>
       <Text
         style={{
           marginTop: 5,

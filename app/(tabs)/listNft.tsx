@@ -3,8 +3,8 @@ import React from 'react';
 
 const listNft = () => {
   return (
-    <View>
-      <Text>listNft</Text>
+    <View className='min-h-screen'>
+      <Text className='text-3xl pt-20 text-center'>listNft</Text>
     </View>
   );
 };

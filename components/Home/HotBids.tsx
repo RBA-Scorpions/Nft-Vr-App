@@ -10,6 +10,7 @@ export class HotBids extends Component {
       <View
         style={{
           marginHorizontal: 15,
+          marginBottom: 60,
         }}
       >
         <Text
