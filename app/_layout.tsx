@@ -7,12 +7,9 @@ import {
 import { useFonts } from 'expo-font';
 import { Link, Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { Image, Pressable } from 'react-native';
 import { useEffect } from 'react';
 import { useColorScheme } from '@/components/useColorScheme';
-import Colors from '@/constants/Colors';
-import { View, Text } from '@/components/Themed';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import '../global.css';
 import { EvilIcons } from '@expo/vector-icons';
 export {
@@ -54,49 +51,6 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
-function Header() {
-  const colorScheme = useColorScheme();
-  const { top } = useSafeAreaInsets();
-
-  return (
-    <View
-      className='flex flex-row justify-between items-center'
-      style={{ paddingTop: top + 10 }}
-    >
-      <Image
-        style={{ width: 35, height: 35, marginLeft: 10 }}
-        source={
-          colorScheme === 'dark'
-            ? require('../assets/images/Dark.png')
-            : require('../assets/images/Light.png')
-        }
-      />
-      <Text style={{ fontSize: 18, fontWeight: '400', fontFamily: 'Gotham' }}>
-        ENMA Galaxy
-      </Text>
-      <Link href='/settings' asChild>
-        <Pressable>
-          {({ pressed }) =>
-            colorScheme === 'dark' ? (
-              <Image
-                width={30}
-                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                source={require('../assets/icons/settings/setting.png')}
-              />
-            ) : (
-              <Image
-                width={30}
-                style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                source={require('../assets/icons/settings/setting-light.png')}
-              />
-            )
-          }
-        </Pressable>
-      </Link>
-    </View>
-  );
-}
-
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
@@ -117,8 +71,7 @@ function RootLayoutNav() {
         <Stack.Screen
           name='(tabs)'
           options={{
-            header: () => <Header />,
-            title: '',
+            headerShown: false,
           }}
         />
       </Stack>
