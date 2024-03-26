@@ -18,7 +18,7 @@ const TopSeller = ({ Seller }: any) => {
     <Link
       href={`/(tabs)/home/top-seller/${Seller.id}`}
       style={{
-        marginVertical: 20,
+        marginVertical: 15,
       }}
     >
       <View
@@ -78,6 +78,9 @@ const TopSeller = ({ Seller }: any) => {
           style={{
             marginTop: 5,
             textAlign: 'center',
+            fontFamily: 'Poppins',
+            fontWeight: 'bold',
+            fontSize: 16,
           }}
         >
           {Seller.name}

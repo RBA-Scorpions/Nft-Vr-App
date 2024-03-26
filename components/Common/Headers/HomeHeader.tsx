@@ -11,8 +11,13 @@ const Header = () => {
 
   return (
     <View
-      className='flex flex-row justify-between items-center'
-      style={{ paddingTop: top + 10 }}
+      style={{
+        paddingTop: top + 10,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+      }}
     >
       <Image
         style={{ width: 35, height: 35, marginLeft: 10 }}

@@ -9,27 +9,26 @@ import {
   ImageBackground,
 } from 'react-native';
 import { Text, View } from '../Themed';
-
-const width = Dimensions.get('window').width;
+import { Link } from 'expo-router';
 
 const ProductListItem = ({ Bid }: any) => {
   const colorScheme = useColorScheme();
 
   return (
-    <View
-      style={[
-        styles.container,
-        {
-          backgroundColor: colorScheme === 'dark' ? '#2A2D3A' : '#FFF',
-          shadowColor: colorScheme !== 'dark' ? '#000' : undefined,
-          shadowOffset: { width: 0, height: 2 },
-          shadowOpacity: colorScheme !== 'dark' ? 0.25 : 0,
-          shadowRadius: 4,
-          elevation: colorScheme !== 'dark' ? 2 : 0,
-        },
-      ]}
-    >
-      <Pressable>
+    <Link href={`/(tabs)/home/hot-bid/${Bid.id}`}>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: colorScheme === 'dark' ? '#2A2D3A' : '#FFF',
+            shadowColor: colorScheme !== 'dark' ? '#000' : undefined,
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: colorScheme !== 'dark' ? 0.25 : 0,
+            shadowRadius: 4,
+            elevation: colorScheme !== 'dark' ? 2 : 0,
+          },
+        ]}
+      >
         <Image
           style={styles.image}
           resizeMode='cover'
@@ -45,7 +44,14 @@ const ProductListItem = ({ Bid }: any) => {
           }}
         >
           <Text style={styles.price}>{Bid.price} ETH</Text>
-          <View className='flex flex-row items-center gap-3'>
+          <View
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              gap: 3,
+              alignItems: 'center',
+            }}
+          >
             <Image
               source={require('../../assets/icons/heart/Active.png')}
               style={{
@@ -62,8 +68,8 @@ const ProductListItem = ({ Bid }: any) => {
             </Text>
           </View>
         </View>
-      </Pressable>
-    </View>
+      </View>
+    </Link>
   );
 };
 

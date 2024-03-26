@@ -1,23 +1,22 @@
 import React from 'react';
 import { View, Text } from '@/components/Themed';
 import { Stack, useLocalSearchParams } from 'expo-router';
-import { Sellers } from '@/components/Home/Sellers';
-import { useColorScheme } from 'react-native';
 import UserHeader from '@/components/Common/Headers/UserHeader';
+import { Bids } from '@/components/Home/Bids';
 
 const TopSeller = () => {
   const { id } = useLocalSearchParams();
   const numId = Number(id);
-  const seller = Sellers.find((seller) => seller.id === numId);
+  const bidder = Bids.find((bid) => bid.id === numId);
 
   return (
     <View>
       <Stack.Screen
         options={{
-          header: () => <UserHeader headerText={seller?.name} />,
+          header: () => <UserHeader headerText={bidder?.name} />,
         }}
       />
-      <Text>TopSeller</Text>
+      <Text>Hot Bid</Text>
     </View>
   );
 };
