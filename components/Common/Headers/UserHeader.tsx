@@ -16,8 +16,8 @@ const UserHeader = ({ headerText }: any) => {
   return (
     <View
       style={{
-        paddingTop: top + 10,
-        paddingBottom: 10,
+        paddingTop: top + 15,
+        paddingBottom: 20,
         display: 'flex',
         flexDirection: 'row',
       }}
